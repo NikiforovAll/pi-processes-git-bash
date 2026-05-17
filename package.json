@@ -1,0 +1,79 @@
+{
+  "name": "pi-processes-git-bash",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "pi",
+    "processes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikiforovall/pi-processes-git-bash"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "skills": [
+      "./skills/pi-processes"
+    ],
+    "video": "https://assets.aliou.me/pi-extensions/demos/pi-processes.mp4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "skills",
+    "README.md",
+    "CONTRIBUTING.md"
+  ],
+  "dependencies": {
+    "@aliou/pi-utils-settings": "^0.10.0",
+    "@aliou/pi-utils-ui": "^0.1.0",
+    "@aliou/sh": "^0.1.0",
+    "typebox": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "0.72.1",
+    "@mariozechner/pi-tui": "0.72.1"
+  },
+  "devDependencies": {
+    "@aliou/biome-plugins": "^0.3.2",
+    "@biomejs/biome": "^2.3.13",
+    "@mariozechner/pi-ai": "0.72.1",
+    "@mariozechner/pi-coding-agent": "0.72.1",
+    "@types/node": "^25.0.10",
+    "husky": "^9.1.7",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "pnpm": {
+    "overrides": {
+      "@mariozechner/pi-ai": "$@mariozechner/pi-coding-agent",
+      "@mariozechner/pi-tui": "$@mariozechner/pi-coding-agent"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "format": "biome check --write",
+    "check:lockfile": "pnpm install --frozen-lockfile --ignore-scripts",
+    "prepare": "[ -d .git ] && husky || true",
+    "test": "vitest run",
+    "release": "pnpm publish --access public"
+  },
+  "packageManager": "pnpm@10.26.1",
+  "peerDependenciesMeta": {
+    "@mariozechner/pi-coding-agent": {
+      "optional": true
+    },
+    "@mariozechner/pi-tui": {
+      "optional": true
+    }
+  }
+}
